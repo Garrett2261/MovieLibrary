@@ -84,3 +84,9 @@ C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\obj\Debug\MovieLi
 C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\obj\Debug\MovieLibrary.csproj.CopyComplete
 C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\obj\Debug\MovieLibrary.dll
 C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\obj\Debug\MovieLibrary.pdb
+C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\bin\EntityFramework.dll
+C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\bin\EntityFramework.SqlServer.dll
+C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\bin\EntityFramework.xml
+C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\bin\EntityFramework.SqlServer.xml
+C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\obj\Debug\MovieLibrary.Migrations.InitialMigration.resources
+C:\Users\Garrett\Desktop\C# Projects\MovieLibrary\MovieLibrary\obj\Debug\MovieLibrary.csproj.GenerateResource.cache
