@@ -9,16 +9,19 @@ namespace MovieLibrary.Controllers
 {
     public class ValuesController : ApiController
     {
+        private static List<MovieLibrary.Models.Movie> movieList { get; } = new List<Models.Movie>();
+        private MovieLibrary.Models.MovieLibraryContext db = new Models.MovieLibraryContext();
         // GET api/values
-        public IEnumerable<string> Get()
+        public IEnumerable<Models.Movie> Get()
         {
-            return new string[] { "value1", "value2" };
+            return db.Movies.ToList();
         }
 
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            var movie = db.Movies.Where(d => d.MovieId == id).Select(d => d.Title).FirstOrDefault().ToString();
+            return movie;
         }
 
         // POST api/values
