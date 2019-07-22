@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace MovieLibrary.Controllers
 {
@@ -25,24 +27,23 @@ namespace MovieLibrary.Controllers
         }
 
         // POST api/values
-        public string Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]MovieLibrary.Models.Movie movie)
         {
-            //var movies = 
-            return value;
+            db.Movies.Add(movie);
+            db.SaveChanges();
+            return Ok();
         }
 
         // PUT api/values/5
-        public string Put(int id, [FromBody]Models.Movie Movie)
+        public IHttpActionResult Put(int id, [FromBody]Models.Movie movie)
         {
-            var movieToUpdate = db.Movies.Where(d => d.MovieId == id).FirstOrDefault();
-            if(movieToUpdate != null)
+            if(id != movie.MovieId)
             {
-                movieToUpdate.Title = Movie.Title;
-                movieToUpdate.Genre = Movie.Genre;
-                movieToUpdate.Director = Movie.Director;
-                
+                return BadRequest();
             }
-            return movieToUpdate.Director;
+            db.Entry(movie).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return Ok();
         }
 
         // DELETE api/values/5
