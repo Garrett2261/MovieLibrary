@@ -18,21 +18,31 @@ namespace MovieLibrary.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public MovieLibrary.Models.Movie Get(int id)
         {
-            var movie = db.Movies.Where(d => d.MovieId == id).Select(d => d.Title).FirstOrDefault().ToString();
-            return movie;
+            var searchedMovie = db.Movies.Find(id);
+            return searchedMovie;
         }
 
         // POST api/values
         public string Post([FromBody]string value)
         {
-            return "Roll out the barrell";
+            //var movies = 
+            return value;
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public string Put(int id, [FromBody]Models.Movie Movie)
         {
+            var movieToUpdate = db.Movies.Where(d => d.MovieId == id).FirstOrDefault();
+            if(movieToUpdate != null)
+            {
+                movieToUpdate.Title = Movie.Title;
+                movieToUpdate.Genre = Movie.Genre;
+                movieToUpdate.Director = Movie.Director;
+                
+            }
+            return movieToUpdate.Director;
         }
 
         // DELETE api/values/5
