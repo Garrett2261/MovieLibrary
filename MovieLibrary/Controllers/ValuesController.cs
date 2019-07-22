@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -22,16 +23,27 @@ namespace MovieLibrary.Controllers
         // GET api/values/5
         public MovieLibrary.Models.Movie Get(int id)
         {
-            var searchedMovie = db.Movies.Find(id);
+            var searchedMovie = db.Movies.Where(d => d.MovieId == id).FirstOrDefault();
             return searchedMovie;
         }
 
         // POST api/values
-        public IHttpActionResult Post([FromBody]MovieLibrary.Models.Movie movie)
+        public HttpResponseMessage Post([FromBody]MovieLibrary.Models.Movie movie)
         {
-            db.Movies.Add(movie);
-            db.SaveChanges();
-            return Ok();
+            HttpResponseMessage response;
+            if (ModelState.IsValid)
+            {
+                db.Movies.Add(movie);
+                db.SaveChanges();
+                response = Request.CreateResponse(HttpStatusCode.Created, movie);
+            }
+            else
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, "Could not save data");
+            }
+            //IHttpActionResult
+
+            return response;
         }
 
         // PUT api/values/5
